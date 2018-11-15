@@ -15,6 +15,7 @@ void setup(){
   }
   background(66,134,230);
   noCursor();
+  frameRate(60);
 }
 
 void draw(){
@@ -125,8 +126,8 @@ class bloon{
       xInc*=-1;
     }
     bloonX+=xInc;
-    bloonY-=(bloonV*bloonTime)+(.49*bloonTime*bloonTime);
-    bloonV-=9.8*bloonTime;
+    bloonY-=(bloonV*bloonTime)+(.5*bloonTime*bloonTime);
+    bloonV-=10*bloonTime;
     if (bloonY>500){
       contact();
     }
@@ -169,7 +170,7 @@ class bloon{
     xInc=(Math.random()*7)-3;
   }
   void contact(){
-     if (Math.abs(bounceX-bloonX)<150){
+     if (Math.abs(bounceX-bloonX)<150&&bloonTime>.05){
        reset();
      }
      else if (bloonY>=600){
